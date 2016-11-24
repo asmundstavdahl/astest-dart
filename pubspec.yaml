@@ -1,6 +1,8 @@
 name: astest
+version: 1.0.0
 description: A simple testing framework for dart
-authors: Åsmund Stavdahl <smund3@gmail.com>
+
+author: Åsmund Stavdahl <smund3@gmail.com>
 
 dependencies:
   test:
