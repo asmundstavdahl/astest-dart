@@ -15,7 +15,6 @@ Then, make your feature/scenario specification and run spec2dart.dart from the p
 //$ cat math.feature
 Feature: 1 + 1 = 2
   As a calculator
-  Given E=MC²
   When I add 1 and 1 together
   Then the result should be 2
 //$ pub run astest:spec2dart.dart math.feature
@@ -27,9 +26,6 @@ import "package:test/test.dart";
 main() {
   feature("1 + 1 = 2")
     ..as("a calculator", (c) {
-      ;
-    })
-    ..given("E=MC²", (c) {
       ;
     })
     ..when("I add 1 and 1 together", (c) {
