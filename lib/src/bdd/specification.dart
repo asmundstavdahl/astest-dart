@@ -15,10 +15,10 @@ class Specification {
 import "package:astest/bdd.dart";
 import "package:test/test.dart";
 
-main() {
-''';
+main() {''';
 
     var lines = specText.split("\n");
+    var featureOrScenarioStringPrefix = "";
     for (var lineNumber = 1; lineNumber <= lines.length; lineNumber++) {
       var line = lines[lineNumber - 1];
 
@@ -32,16 +32,18 @@ main() {
         var matches = keywordPattern.allMatches(line);
         var keyword = matches.elementAt(0).group(1);
         var restOfLine = matches.elementAt(0).group(2);
+        restOfLine = restOfLine.replaceAll('\\', '\\\\');
+        restOfLine = restOfLine.replaceAll('"', '\\"');
 
         switch (keyword) {
           case "Scenario":
-          case "Feature":
-            dart = dart +
-                '''
-  scenario("${restOfLine}")
-''';
+            dart = dart + "${featureOrScenarioStringPrefix}\n  scenario(\"${restOfLine}\")";
+            featureOrScenarioStringPrefix = "();\n";
             break;
-
+          case "Feature":
+            dart = dart + "${featureOrScenarioStringPrefix}\n  feature(\"${restOfLine}\")";
+            featureOrScenarioStringPrefix = "();\n";
+            break;
           case "As":
           case "I want":
           case "So that":
@@ -54,18 +56,15 @@ main() {
           case "Examples":
             dart = dart +
                 '''
+
     ..${keyword.toLowerCase().replaceAll(" ", "_")}("${restOfLine}", (c) {
       ;
-    })
-''';
+    })''';
         }
       }
     }
 
-    dart = dart.substring(0, dart.length - 1) +
-        '''();
-}
-''';
+    dart = dart + "();\n}\n";
 
     return dart;
   }
