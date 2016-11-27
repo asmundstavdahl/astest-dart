@@ -13,10 +13,10 @@ main() {
       expect(1, isNot(0));
     })
     ..and("1 is less than 2", (c) {
-      expect(1, lessThan(1));
+      expect(1, lessThan(2));
     })
     ..and("1 is greater than -1", (c) {
-      expect(1, greaterThan(2));
+      expect(1, greaterThan(-1));
     })
     ..when("I add 1 and 1 together", (c) {
       ;
