@@ -1,0 +1,28 @@
+'scopeName': 'text.astest.specification'
+'name': 'astest specification'
+'fileTypes': [
+    'feature'
+    'scenario'
+]
+
+'foldingStartMarker': '^(Feature|Scenario):'
+#'foldingStopMarker': '\\n\\r?\\n'
+
+'patterns': [
+    {
+        'match': '^(Feature|Scenario):\\s+(.*)$'
+        'captures':
+            '1':
+                'name': 'keyword'
+            '2':
+                'name': 'text'
+    }
+    {
+        'match': '^\\s+([A-Z][a-z]+)\\s+(.*)$'
+        'captures':
+            '1':
+                'name': 'keyword'
+            '2':
+                'name': 'string'
+    }
+]
