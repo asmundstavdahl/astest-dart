@@ -16,7 +16,9 @@ main(List<String> arguments) {
     try {
       String textSpec = new File(path).readAsStringSync();
       String dartSpec = Specification.compileTextToDart(textSpec);
-      new File(path.replaceAll(".scenario", "_test.dart"))
+      new File(path
+              .replaceAll(".scenario", "_test.dart")
+              .replaceAll(".feature", "_test.dart"))
           .writeAsStringSync(dartSpec);
     } catch (e) {
       stderr.writeln("Failed to convert ${path}: ${e.toString()}");
