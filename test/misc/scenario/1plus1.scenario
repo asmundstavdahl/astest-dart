@@ -8,3 +8,8 @@ Scenario: Adding 1 and 1
   When I add 1 and 1 together
   Then the result should be 2
   And not 3
+
+Scenario: I put quotes in my spec
+  As a developer
+  When I write a double quote (") in my spec
+  Then it should be escaped (\")
