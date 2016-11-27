@@ -191,11 +191,10 @@ So that
   }
 
   Function and(String s, Function proceedure) {
-    String proceedureKey = "and";
+    String proceedureKey = _prevProceedureKey;
     if (callbacks[proceedureKey] == null)
       callbacks[proceedureKey] = new List<Function>();
     assert(_prevProceedureKey != null);
-    _prevProceedureKey = proceedureKey;
     callbacks[_prevProceedureKey]
         .add(new SpecificationProceedure(s, proceedure));
     return this;
