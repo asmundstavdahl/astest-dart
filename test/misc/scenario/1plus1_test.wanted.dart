@@ -27,4 +27,15 @@ main() {
     ..and("not 3", (c) {
       ;
     })();
+
+  scenario("I put quotes in my spec")
+    ..as("a developer", (c) {
+      ;
+    })
+    ..when("I write a double quote (\") in my spec", (c) {
+      ;
+    })
+    ..then("it should be escaped (\\\")", (c) {
+      ;
+    })();
 }
