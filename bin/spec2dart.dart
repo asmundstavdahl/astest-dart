@@ -16,10 +16,29 @@ main(List<String> arguments) {
     try {
       String textSpec = new File(path).readAsStringSync();
       String dartSpec = Specification.compileTextToDart(textSpec);
-      new File(path
-              .replaceAll(".scenario", "_test.dart")
-              .replaceAll(".feature", "_test.dart"))
-          .writeAsStringSync(dartSpec);
+      File outputFile = new File(path
+          .replaceAll(".scenario", "_test.dart")
+          .replaceAll(".feature", "_test.dart"));
+
+      bool writeToFile = false;
+      if (outputFile.existsSync()) {
+        print("Warning: desination file exists; oddverwrite? [yN]");
+        String response = stdin.readLineSync();
+        switch (response) {
+          case "y":
+          case "Y":
+          case "yes":
+          case "Yes":
+          case "YES":
+            writeToFile = true;
+        }
+      } else {
+        writeToFile = true;
+      }
+
+      if (writeToFile) {
+        outputFile.writeAsStringSync(dartSpec);
+      }
     } catch (e) {
       stderr.writeln("Failed to convert ${path}: ${e.toString()}");
       exitCode = 1;
