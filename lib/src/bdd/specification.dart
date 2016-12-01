@@ -99,7 +99,7 @@ main() {''';
           currentSpecificationProgress =
               currentSpecificationProgress + "\n      ${proceedureLabel} ${sp.description}";
           sp.error = "The specification did not pass.\n ${currentSpecificationProgress} ←FAILED\n";
-          test(sp.error, (){
+          test(sp.description, (){
             sp(context);
           });
           sp.error = null;
