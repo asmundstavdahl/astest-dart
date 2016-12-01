@@ -18,7 +18,7 @@
                 'name': 'text'
     }
     {
-        'match': '^\\s+([A-Z][a-z]+)\\s+(.*)$'
+        'match': '^\\s+([A-Z][a-z]+|I want|So that)\\s+(.*)$'
         'captures':
             '1':
                 'name': 'keyword'
