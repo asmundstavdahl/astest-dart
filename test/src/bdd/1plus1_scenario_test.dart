@@ -19,12 +19,12 @@ main() {
       expect(1, greaterThan(-1));
     })
     ..when("I add 1 and 1 together", (c) {
-      ;
+      c.result = 1 + 1;
     })
     ..then("the result should be 2", (c) {
-      ;
+      expect(c.result, equals(2));
     })
     ..and("not 3", (c) {
-      ;
+      expect(c.result, isNot(3));
     })();
 }
